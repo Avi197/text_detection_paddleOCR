@@ -38,3 +38,22 @@ Training scripts with config
 ```
 python3 tools/train.py -c configs/det/det_mv3_custom.yml
 ```
+
+Convert trained model to inference model
+```
+python3 tools/export_model.py -c configs/det/det_mv3_db.yml -o Global.pretrained_model="./output/det_db/best_accuracy" Global.save_inference_dir="./output/det_db_inference/"
+```
+
+#### Prediction
+
+Use the inference model to get prediction result
+
+command line
+```
+python3 tools/infer/predict_det.py --det_algorithm="DB" --det_model_dir="./output/det_db_inference/" --image_dir="./doc/imgs/" --use_gpu=True
+```
+
+code
+```
+custom_predict.py
+```
