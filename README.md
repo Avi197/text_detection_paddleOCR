@@ -1,8 +1,7 @@
 text detection using paddleOCR
 
 #### PaddleOCR installation
-https://github.com/PaddlePaddle/PaddleOCR
-
+https://www.paddlepaddle.org.cn/install/quick?docurl=/documentation/docs/zh/install/conda/linux-conda.html
 #### Image label format
 
 preprocess folder contain script that convert ICDAR and CTPN format to paddleOCR format
