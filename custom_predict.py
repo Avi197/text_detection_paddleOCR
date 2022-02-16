@@ -17,6 +17,9 @@ if __name__ == '__main__':
     args.det_algorithm = "DB"
     args.det_model_dir = os.path.join(model_dir, 'paddle')
     args.use_gpu = False
+ 
+    image_file_list = get_image_file_list(args.image_dir)
+
     paddle_text_detector = TextDetectorPaddle(args)
 
     img = cv2.imread(image_file_list[0])
