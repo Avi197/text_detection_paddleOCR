@@ -15,7 +15,7 @@ from text_detection_paddle.utils import utility
 if __name__ == '__main__':
     args = utility.parse_args()
     args.det_algorithm = "DB"
-    args.det_model_dir = os.path.join(model_dir, 'paddle')
+    args.det_model_dir = "path_to_model"
     args.use_gpu = False
  
     image_file_list = get_image_file_list(args.image_dir)
@@ -24,5 +24,5 @@ if __name__ == '__main__':
 
     img = cv2.imread(image_file_list[0])
 
-    paddle_text_detector.predict_ratio(self.np_img)
+    paddle_text_detector.predict_ratio(img)
     
