@@ -1,9 +1,13 @@
 text detection using paddleOCR
 
 #### PaddleOCR installation
+
+clone PaddleOCR https://github.com/PaddlePaddle/PaddleOCR
+
+
+Install paddle lib on conda
 https://www.paddlepaddle.org.cn/install/quick?docurl=/documentation/docs/zh/install/conda/linux-conda.html
 
-Install paddle lib on conda 
 ```
 conda install paddlepaddle-gpu==2.2.2 cudatoolkit=11.2 -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/Paddle/ -c conda-forge
 ```
