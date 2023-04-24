@@ -3,8 +3,9 @@ import time
 
 import numpy as np
 
-from text_detection_paddle.text_detector_paddle import TextDetectorPaddle
-from text_detection_paddle.utils import utility
+from ppocr.utils.utility import get_image_file_list
+from text_detector_paddle import TextDetectorPaddle
+from utils import utility
 
 # python3 tools/infer/text_detector_paddle.py --det_algorithm="DB"
 # --det_model_dir="./output/det_db_aug/best_accuracy"
