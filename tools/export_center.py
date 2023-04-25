@@ -22,7 +22,7 @@ import pickle
 
 __dir__ = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(__dir__)
-sys.path.append(os.path.abspath(os.path.join(__dir__, '..')))
+sys.path.append(os.path.abspath(os.path.join(__dir__, '../text_detector')))
 
 from ppocr.data import build_dataloader
 from ppocr.modeling.architectures import build_model

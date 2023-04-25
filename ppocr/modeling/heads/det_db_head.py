@@ -31,13 +31,14 @@ def get_bias_attr(k):
 
 
 class Head(nn.Layer):
-    def __init__(self, in_channels, name_list):
+    def __init__(self, in_channels, kernel_list=[3, 2, 2], **kwargs):
         super(Head, self).__init__()
+
         self.conv1 = nn.Conv2D(
             in_channels=in_channels,
             out_channels=in_channels // 4,
-            kernel_size=3,
-            padding=1,
+            kernel_size=kernel_list[0],
+            padding=int(kernel_list[0] // 2),
             weight_attr=ParamAttr(),
             bias_attr=False)
         self.conv_bn1 = nn.BatchNorm(
@@ -50,7 +51,7 @@ class Head(nn.Layer):
         self.conv2 = nn.Conv2DTranspose(
             in_channels=in_channels // 4,
             out_channels=in_channels // 4,
-            kernel_size=2,
+            kernel_size=kernel_list[1],
             stride=2,
             weight_attr=ParamAttr(
                 initializer=paddle.nn.initializer.KaimingUniform()),
@@ -65,7 +66,7 @@ class Head(nn.Layer):
         self.conv3 = nn.Conv2DTranspose(
             in_channels=in_channels // 4,
             out_channels=1,
-            kernel_size=2,
+            kernel_size=kernel_list[2],
             stride=2,
             weight_attr=ParamAttr(
                 initializer=paddle.nn.initializer.KaimingUniform()),
@@ -92,16 +93,8 @@ class DBHead(nn.Layer):
     def __init__(self, in_channels, k=50, **kwargs):
         super(DBHead, self).__init__()
         self.k = k
-        binarize_name_list = [
-            'conv2d_56', 'batch_norm_47', 'conv2d_transpose_0', 'batch_norm_48',
-            'conv2d_transpose_1', 'binarize'
-        ]
-        thresh_name_list = [
-            'conv2d_57', 'batch_norm_49', 'conv2d_transpose_2', 'batch_norm_50',
-            'conv2d_transpose_3', 'thresh'
-        ]
-        self.binarize = Head(in_channels, binarize_name_list)
-        self.thresh = Head(in_channels, thresh_name_list)
+        self.binarize = Head(in_channels, **kwargs)
+        self.thresh = Head(in_channels, **kwargs)
 
     def step_function(self, x, y):
         return paddle.reciprocal(1 + paddle.exp(-self.k * (x - y)))

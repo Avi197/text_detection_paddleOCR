@@ -19,21 +19,17 @@ from __future__ import unicode_literals
 
 import os
 import sys
-import numpy as np
-import paddle
 import signal
-import random
 
 __dir__ = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.abspath(os.path.join(__dir__, '../..')))
+sys.path.append(os.path.abspath(os.path.join(__dir__, '../../text_detector')))
 
 import copy
-from paddle.io import Dataset, DataLoader, BatchSampler, DistributedBatchSampler
-import paddle.distributed as dist
+from paddle.io import DataLoader, BatchSampler, DistributedBatchSampler
 
 from ppocr.data.imaug import transform, create_operators
 from ppocr.data.simple_dataset import SimpleDataSet
-from ppocr.data.lmdb_dataset import LMDBDataSet
+from ppocr.data.lmdb_dataset import LMDBDataSet, LMDBDataSetSR
 from ppocr.data.pgnet_dataset import PGDataSet
 from ppocr.data.pubtab_dataset import PubTabDataSet
 
@@ -53,7 +49,8 @@ def build_dataloader(config, mode, device, logger, seed=None):
     config = copy.deepcopy(config)
 
     support_dict = [
-        'SimpleDataSet', 'LMDBDataSet', 'PGDataSet', 'PubTabDataSet'
+        'SimpleDataSet', 'LMDBDataSet', 'PGDataSet', 'PubTabDataSet',
+        'LMDBDataSetSR'
     ]
     module_name = config[mode]['dataset']['name']
     assert module_name in support_dict, Exception(
@@ -71,6 +68,7 @@ def build_dataloader(config, mode, device, logger, seed=None):
         use_shared_memory = loader_config['use_shared_memory']
     else:
         use_shared_memory = True
+
     if mode == "Train":
         # Distribute data to multiple cards
         batch_sampler = DistributedBatchSampler(
@@ -86,13 +84,19 @@ def build_dataloader(config, mode, device, logger, seed=None):
             shuffle=shuffle,
             drop_last=drop_last)
 
+    if 'collate_fn' in loader_config:
+        from . import collate_fn
+        collate_fn = getattr(collate_fn, loader_config['collate_fn'])()
+    else:
+        collate_fn = None
     data_loader = DataLoader(
         dataset=dataset,
         batch_sampler=batch_sampler,
         places=device,
         num_workers=num_workers,
         return_list=True,
-        use_shared_memory=use_shared_memory)
+        use_shared_memory=use_shared_memory,
+        collate_fn=collate_fn)
 
     # support exit using ctrl+c
     signal.signal(signal.SIGINT, term_mp)
