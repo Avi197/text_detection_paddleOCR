@@ -103,4 +103,9 @@ custom_predict.py
 ```
 
 text_detection Class
+```
+CustomPaddleOCR.py inherit from main PaddleClass
+text_detector_paddle.py add custom pre/post_process text detection
+```
+
 
