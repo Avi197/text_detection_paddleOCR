@@ -108,4 +108,17 @@ CustomPaddleOCR.py inherit from main PaddleClass
 text_detector_paddle.py add custom pre/post_process text detection
 ```
 
+### Note
+
+If encoutner this error
+```
+RuntimeError: (PreconditionNotMet) Cannot load cudnn shared library. Cannot invoke method cudnnGetVersion.
+```
+
+run this
+```
+export LD_LIBRARY_PATH={conda_env/lib}:$LD_LIBRARY_PATH
+```
+
+
 
