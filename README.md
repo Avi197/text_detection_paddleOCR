@@ -59,6 +59,7 @@ data_dir + img_file_name.jpg
 ### Training
 
 ##### Detail for customizing PaddleOCR
+
 config [PaddleOCR config](https://github.com/PaddlePaddle/PaddleOCR/blob/release/2.4/doc/doc_en/config_en.md)
 <br>
 configs folder contain 1 sample config file
@@ -103,6 +104,7 @@ custom_predict.py
 ```
 
 text_detection Class
+
 ```
 CustomPaddleOCR.py inherit from main PaddleClass
 text_detector_paddle.py add custom pre/post_process text detection
