@@ -88,7 +88,7 @@ paddleocr --image_dir=ppstructure/docs/table/table.jpg --type=structure --layout
 
 #### 2.1.5 Key Information Extraction
 
-Key information extraction does not currently support use by the whl package. For detailed usage tutorials, please refer to: [inference document](inference_en.md).
+Key information extraction does not currently support use by the whl package. For detailed usage tutorials, please refer to: [inference document](./inference_en.md).
 
 <a name="216"></a>
 #### 2.1.6 layout recovery(PDF to Word)
@@ -164,7 +164,7 @@ for line in result:
 
 from PIL import Image
 
-font_path = 'doc/fonts/simfang.ttf' # font provieded in PaddleOCR
+font_path = 'doc/fonts/simfang.ttf' # font provided in PaddleOCR
 image = Image.open(img_path).convert('RGB')
 im_show = draw_structure_result(image, result,font_path=font_path)
 im_show = Image.fromarray(im_show)

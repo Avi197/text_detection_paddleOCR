@@ -56,7 +56,7 @@ PP-Structure中关键信息抽取模块的主要特性如下：
 （1）文本检测 + 文本识别 + 语义实体识别(SER)
 （2）文本检测 + 文本识别 + 语义实体识别(SER) + 关系抽取(RE)
 
-下面给出SER与RE任务的示例效果，关于上述解决方案的详细介绍，请参考[关键信息抽取全流程指南](how_to_do_kie.md)。
+下面给出SER与RE任务的示例效果，关于上述解决方案的详细介绍，请参考[关键信息抽取全流程指南](./how_to_do_kie.md)。
 
 ### 3.1 SER
 
@@ -170,6 +170,10 @@ python3 ./tools/infer_kie_token_ser_re.py \
 
 `Global.save_res_path`目录中会保存可视化的结果图像以及预测的文本文件。
 
+如果想使用自定义OCR模型，可通过如下字段进行设置
+- `Global.kie_det_model_dir`: 设置检测inference模型地址
+- `Global.kie_rec_model_dir`: 设置识别inference模型地址
+
 
 如果希望加载标注好的文本检测与识别结果，仅预测可以使用下面的命令进行预测。
 
@@ -239,6 +243,9 @@ python3 kie/predict_kie_token_ser_re.py \
 
 可视化结果保存在`output`目录下。
 
+如果想使用自定义OCR模型，可通过如下字段进行设置
+- `--det_model_dir`: 设置检测inference模型地址
+- `--rec_model_dir`: 设置识别inference模型地址
 
 ### 4.3 更多
 
@@ -248,7 +255,7 @@ python3 kie/predict_kie_token_ser_re.py \
 
 关于文本识别模型的训练评估与推理，请参考：[文本识别教程](../../doc/doc_ch/recognition.md)。
 
-关于怎样在自己的场景中完成关键信息抽取任务，请参考：[关键信息抽取全流程指南](how_to_do_kie.md)。
+关于怎样在自己的场景中完成关键信息抽取任务，请参考：[关键信息抽取全流程指南](./how_to_do_kie.md)。
 
 
 ## 5. 参考链接

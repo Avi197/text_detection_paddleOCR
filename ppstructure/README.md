@@ -103,14 +103,14 @@ In the figure, the red box represents `Question`, the blue box represents `Answe
 
 ## 4. Quick start
 
-Start from [Quick Start](docs/quickstart_en.md).
+Start from [Quick Start](./docs/quickstart_en.md).
 
 ## 5. Model List
 
 Some tasks need to use both the structured analysis models and the OCR models. For example, the table recognition task needs to use the table recognition model for structured analysis, and the OCR model to recognize the text in the table. Please select the appropriate models according to your specific needs.
 
 For structural analysis related model downloads, please refer to:
-- [PP-Structure Model Zoo](docs/models_list_en.md)
+- [PP-Structure Model Zoo](./docs/models_list_en.md)
 
 For OCR related model downloads, please refer to:
 - [PP-OCR Model Zoo](../doc/doc_en/models_list_en.md)

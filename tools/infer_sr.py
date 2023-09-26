@@ -26,7 +26,7 @@ import cv2
 
 __dir__ = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, __dir__)
-sys.path.insert(0, os.path.abspath(os.path.join(__dir__, '../text_detector')))
+sys.path.insert(0, os.path.abspath(os.path.join(__dir__, '..')))
 
 os.environ["FLAGS_allocator_strategy"] = 'auto_growth'
 

@@ -108,7 +108,7 @@ PP-StructureV2支持各个模块独立使用或灵活搭配，如，可以单独
 <a name="4"></a>
 ## 4. 快速体验
 
-请参考[快速使用](docs/quickstart.md)教程。
+请参考[快速使用](./docs/quickstart.md)教程。
 
 <a name="5"></a>
 ## 5. 模型库
@@ -116,7 +116,7 @@ PP-StructureV2支持各个模块独立使用或灵活搭配，如，可以单独
 部分任务需要同时用到结构化分析模型和OCR模型，如表格识别需要使用表格识别模型进行结构化解析，同时也要用到OCR模型对表格内的文字进行识别，请根据具体需求选择合适的模型。
 
 结构化分析相关模型下载可以参考：
-- [PP-Structure 模型库](docs/models_list.md)
+- [PP-Structure 模型库](./docs/models_list.md)
 
 OCR相关模型下载可以参考：
 - [PP-OCR 模型库](../doc/doc_ch/models_list.md)

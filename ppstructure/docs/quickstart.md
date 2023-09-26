@@ -104,6 +104,19 @@ paddleocr --image_dir=ppstructure/recovery/UnrealText.pdf --type=structure --rec
 
 通过OCR技术：
 
+版面恢复分为2种方法，详细介绍请参考：[版面恢复教程](https://github.com/PaddlePaddle/PaddleOCR/blob/dygraph/ppstructure/recovery/README_ch.md)：
+
+- PDF解析
+- OCR技术
+
+通过PDF解析(只支持pdf格式的输入)：
+
+```bash
+paddleocr --image_dir=ppstructure/recovery/UnrealText.pdf --type=structure --recovery=true --use_pdf2docx_api=true
+```
+
+通过OCR技术：
+
 ```bash
 # 中文测试图
 paddleocr --image_dir=ppstructure/docs/table/1.png --type=structure --recovery=true
@@ -221,7 +234,7 @@ for line in result:
 <a name="225"></a>
 #### 2.2.5 关键信息抽取
 
-关键信息抽取暂不支持通过whl包调用，详细使用教程请参考：[inference文档](inference.md)。
+关键信息抽取暂不支持通过whl包调用，详细使用教程请参考：[inference文档](./inference.md)。
 
 <a name="226"></a>
 

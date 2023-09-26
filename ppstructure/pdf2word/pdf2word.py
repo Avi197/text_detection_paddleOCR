@@ -30,7 +30,7 @@ from qtpy.QtCore import Signal, QThread, QObject
 from qtpy.QtGui import QImage, QPixmap, QIcon
 
 file = os.path.dirname(os.path.abspath(__file__))
-root = os.path.abspath(os.path.join(file, '../../text_detector/'))
+root = os.path.abspath(os.path.join(file, '../../'))
 sys.path.append(file)
 sys.path.insert(0, root)
 

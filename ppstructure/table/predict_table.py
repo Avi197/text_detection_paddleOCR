@@ -18,7 +18,7 @@ import sys
 __dir__ = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(__dir__)
 sys.path.insert(0, os.path.abspath(os.path.join(__dir__, '..')))
-sys.path.insert(0, os.path.abspath(os.path.join(__dir__, '../../text_detector')))
+sys.path.insert(0, os.path.abspath(os.path.join(__dir__, '../..')))
 
 os.environ["FLAGS_allocator_strategy"] = 'auto_growth'
 import cv2
@@ -93,7 +93,7 @@ class TableSystem(object):
         time_dict['rec'] = rec_elapse
 
         if return_ocr_result_in_table:
-            result['boxes'] = dt_boxes  #[x.tolist() for x in dt_boxes]
+            result['boxes'] = [x.tolist() for x in dt_boxes]
             result['rec_res'] = rec_res
 
         tic = time.time()
